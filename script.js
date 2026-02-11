@@ -1,7 +1,9 @@
-// Subscribe
+// ============================
+// Subscribe Feature
+// ============================
 function subscribe() {
     const email = document.getElementById("subscribeEmail").value;
-    if(email.includes("@")) {
+    if (email.includes("@")) {
         alert("Thank you for subscribing!");
         document.getElementById("subscribeEmail").value = "";
     } else {
@@ -9,7 +11,9 @@ function subscribe() {
     }
 }
 
-// Shopping Cart
+// ============================
+// Shopping Cart Feature
+// ============================
 let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
 function addToCart(name) {
@@ -22,12 +26,14 @@ function viewCart() {
     const modal = document.getElementById("cartModal");
     const content = document.getElementById("cartItems");
     content.innerHTML = "";
-    if(cart.length === 0) content.innerHTML = "<p>Cart is empty</p>";
-    else cart.forEach(item => {
-        const p = document.createElement("p");
-        p.textContent = item;
-        content.appendChild(p);
-    });
+    if (cart.length === 0) content.innerHTML = "<p>Cart is empty</p>";
+    else {
+        cart.forEach(item => {
+            const p = document.createElement("p");
+            p.textContent = item;
+            content.appendChild(p);
+        });
+    }
     modal.style.display = "flex";
 }
 
@@ -39,8 +45,9 @@ function clearCart() {
 }
 
 function processOrder() {
-    if(cart.length === 0) alert("Cart is empty!");
-    else {
+    if (cart.length === 0) {
+        alert("Cart is empty!");
+    } else {
         alert("Thank you for your order!");
         cart = [];
         sessionStorage.removeItem("cart");
@@ -48,26 +55,31 @@ function processOrder() {
     }
 }
 
-// Close modal
+// Close Cart Modal
 function closeCart() {
     document.getElementById("cartModal").style.display = "none";
 }
 
-// Contact Form
-function submitContact() {
-    const name = document.getElementById("contactName").value;
-    const email = document.getElementById("contactEmail").value;
-    const phone = document.getElementById("contactPhone").value;
-    const message = document.getElementById("contactMessage").value;
+// ============================
+// Contact Form Feature (localStorage)
+// ============================
+function submitContactForm(event) {
+    event.preventDefault(); // Prevent page reload
 
-    if(!name || !email || !message) {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const message = document.getElementById("message").value;
+    const customOrder = document.getElementById("customOrder").checked;
+
+    if (!name || !email || !message) {
         alert("Please fill in required fields.");
         return;
     }
 
-    const contactObj = {name, email, phone, message};
+    const contactObj = { name, email, phone, message, customOrder };
     localStorage.setItem("contact_" + Date.now(), JSON.stringify(contactObj));
+
     alert("Thank you for your message, " + name + "!");
     document.getElementById("contactForm").reset();
 }
-
