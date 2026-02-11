@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    font-family: Calibri, sans-serif;
+    background-color: #FFF7EE; /* Parchment White */
+    color: #131C26; /* Bookish Black */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #2E4057; /* Inkwell Blue */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+header img {
+    height: 50px;
+}
+nav a {
+    color: #FFF7EE;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #F7B3CC; /* Dusty Rose */
+}
+
+/* Footer */
+footer {
+    background-color: #C7B65E; /* Aged Gold */
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+footer input[type="email"] {
+    padding: 5px;
+    margin-right: 10px;
+}
+footer button {
+    padding: 5px 10px;
+    background-color: #2E4057;
+    color: #FFF7EE;
+    border: none;
+    cursor: pointer;
+}
+footer button:hover {
+    background-color: #F7B3CC;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.gallery-item {
+    background-color: #EE583F; /* Intensity Indigo */
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: #FFF7EE;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Modal Cart */
+#cartModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+#cartContent {
+    background-color: #FFF7EE;
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 400px;
+}
+#cartContent button {
+    margin: 5px;
+}
+
+/* Forms */
+form input, form textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+}
+form button {
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    nav {
+        display: none; /* Collapse for hamburger if implemented */
+    }
+}
+
